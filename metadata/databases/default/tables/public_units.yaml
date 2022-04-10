@@ -1,0 +1,26 @@
+table:
+  name: units
+  schema: public
+array_relationships:
+- name: recipe_ingredients
+  using:
+    foreign_key_constraint_on:
+      column: unit
+      table:
+        name: recipe_ingredients
+        schema: public
+select_permissions:
+- permission:
+    columns:
+    - id
+    - long_name
+    - short_name
+    filter: {}
+  role: public
+- permission:
+    columns:
+    - id
+    - long_name
+    - short_name
+    filter: {}
+  role: user

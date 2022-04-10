@@ -1,0 +1,72 @@
+table:
+  name: recipes
+  schema: public
+object_relationships:
+- name: user
+  using:
+    foreign_key_constraint_on: user_id
+array_relationships:
+- name: recipe_ingredients
+  using:
+    foreign_key_constraint_on:
+      column: recipe_id
+      table:
+        name: recipe_ingredients
+        schema: public
+insert_permissions:
+- permission:
+    backend_only: false
+    check:
+      user_id:
+        _eq: X-Hasura-User-Id
+    columns:
+    - description
+    - image
+    - name
+    - steps
+    set:
+      user_id: x-hasura-USER-ID
+  role: user
+select_permissions:
+- permission:
+    columns:
+    - id
+    - name
+    - description
+    - image
+    - steps
+    - created_at
+    - updated_at
+    - user_id
+    filter: {}
+  role: public
+- permission:
+    columns:
+    - id
+    - steps
+    - description
+    - image
+    - name
+    - user_id
+    - created_at
+    - updated_at
+    filter: {}
+  role: user
+update_permissions:
+- permission:
+    check: null
+    columns:
+    - description
+    - image
+    - name
+    - steps
+    filter:
+      user_id:
+        _eq: X-Hasura-User-Id
+  role: user
+delete_permissions:
+- permission:
+    filter:
+      user_id:
+        _eq: X-Hasura-User-Id
+  role: user

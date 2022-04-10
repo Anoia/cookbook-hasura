@@ -1,0 +1,24 @@
+table:
+  name: users
+  schema: public
+array_relationships:
+- name: recipes
+  using:
+    foreign_key_constraint_on:
+      column: user_id
+      table:
+        name: recipes
+        schema: public
+select_permissions:
+- permission:
+    columns:
+    - id
+    - name
+    filter: {}
+  role: public
+- permission:
+    columns:
+    - id
+    - name
+    filter: {}
+  role: user
