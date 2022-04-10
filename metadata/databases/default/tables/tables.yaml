@@ -1,5 +1,6 @@
 - "!include public_ingredients.yaml"
 - "!include public_recipe_ingredients.yaml"
 - "!include public_recipes.yaml"
+- "!include public_tags.yaml"
 - "!include public_units.yaml"
 - "!include public_users.yaml"
