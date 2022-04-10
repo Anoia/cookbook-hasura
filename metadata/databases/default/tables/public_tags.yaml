@@ -7,4 +7,10 @@ select_permissions:
     - id
     - name
     filter: {}
+  role: manager
+- permission:
+    columns:
+    - id
+    - name
+    filter: {}
   role: user

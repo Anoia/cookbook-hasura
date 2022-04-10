@@ -16,6 +16,13 @@ select_permissions:
     - long_name
     - short_name
     filter: {}
+  role: manager
+- permission:
+    columns:
+    - id
+    - long_name
+    - short_name
+    filter: {}
   role: public
 - permission:
     columns:

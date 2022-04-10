@@ -16,6 +16,17 @@ array_relationships:
 insert_permissions:
 - permission:
     backend_only: false
+    check: {}
+    columns:
+    - description
+    - image
+    - name
+    - steps
+    set:
+      user_id: x-hasura-USER-ID
+  role: manager
+- permission:
+    backend_only: false
     check:
       user_id:
         _eq: X-Hasura-User-Id
@@ -28,6 +39,18 @@ insert_permissions:
       user_id: x-hasura-USER-ID
   role: user
 select_permissions:
+- permission:
+    columns:
+    - id
+    - steps
+    - description
+    - image
+    - name
+    - user_id
+    - created_at
+    - updated_at
+    filter: {}
+  role: manager
 - permission:
     columns:
     - id
@@ -60,11 +83,23 @@ update_permissions:
     - image
     - name
     - steps
+    filter: {}
+  role: manager
+- permission:
+    check: null
+    columns:
+    - description
+    - image
+    - name
+    - steps
     filter:
       user_id:
         _eq: X-Hasura-User-Id
   role: user
 delete_permissions:
+- permission:
+    filter: {}
+  role: manager
 - permission:
     filter:
       user_id:
