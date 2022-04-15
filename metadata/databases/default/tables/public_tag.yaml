@@ -1,6 +1,6 @@
 table:
   schema: public
-  name: tags
+  name: tag
 select_permissions:
   - role: manager
     permission:

@@ -1,107 +1,107 @@
 table:
-  name: recipes
   schema: public
+  name: recipes
 object_relationships:
-- name: user
-  using:
-    foreign_key_constraint_on: user_id
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
 array_relationships:
-- name: recipe_ingredients
-  using:
-    foreign_key_constraint_on:
-      column: recipe_id
-      table:
-        name: recipe_ingredients
-        schema: public
+  - name: recipe_ingredients
+    using:
+      foreign_key_constraint_on:
+        column: recipe_id
+        table:
+          schema: public
+          name: recipe_ingredients
 insert_permissions:
-- permission:
-    backend_only: false
-    check: {}
-    columns:
-    - description
-    - image
-    - name
-    - steps
-    set:
-      user_id: x-hasura-USER-ID
-  role: manager
-- permission:
-    backend_only: false
-    check:
-      user_id:
-        _eq: X-Hasura-User-Id
-    columns:
-    - description
-    - image
-    - name
-    - steps
-    set:
-      user_id: x-hasura-USER-ID
-  role: user
+  - role: manager
+    permission:
+      check: {}
+      set:
+        user_id: x-hasura-USER-ID
+      columns:
+        - description
+        - image
+        - name
+        - steps
+      backend_only: false
+  - role: user
+    permission:
+      check:
+        user_id:
+          _eq: X-Hasura-User-Id
+      set:
+        user_id: x-hasura-USER-ID
+      columns:
+        - description
+        - image
+        - name
+        - steps
+      backend_only: false
 select_permissions:
-- permission:
-    columns:
-    - id
-    - steps
-    - description
-    - image
-    - name
-    - user_id
-    - created_at
-    - updated_at
-    filter: {}
-  role: manager
-- permission:
-    columns:
-    - id
-    - name
-    - description
-    - image
-    - steps
-    - created_at
-    - updated_at
-    - user_id
-    filter: {}
-  role: public
-- permission:
-    columns:
-    - id
-    - steps
-    - description
-    - image
-    - name
-    - user_id
-    - created_at
-    - updated_at
-    filter: {}
-  role: user
+  - role: manager
+    permission:
+      columns:
+        - id
+        - steps
+        - description
+        - image
+        - name
+        - user_id
+        - created_at
+        - updated_at
+      filter: {}
+  - role: public
+    permission:
+      columns:
+        - id
+        - name
+        - description
+        - image
+        - steps
+        - created_at
+        - updated_at
+        - user_id
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - id
+        - steps
+        - description
+        - image
+        - name
+        - user_id
+        - created_at
+        - updated_at
+      filter: {}
 update_permissions:
-- permission:
-    check: null
-    columns:
-    - description
-    - image
-    - name
-    - steps
-    filter: {}
-  role: manager
-- permission:
-    check: null
-    columns:
-    - description
-    - image
-    - name
-    - steps
-    filter:
-      user_id:
-        _eq: X-Hasura-User-Id
-  role: user
+  - role: manager
+    permission:
+      columns:
+        - description
+        - image
+        - name
+        - steps
+      filter: {}
+      check: null
+  - role: user
+    permission:
+      columns:
+        - description
+        - image
+        - name
+        - steps
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+      check: null
 delete_permissions:
-- permission:
-    filter: {}
-  role: manager
-- permission:
-    filter:
-      user_id:
-        _eq: X-Hasura-User-Id
-  role: user
+  - role: manager
+    permission:
+      filter: {}
+  - role: user
+    permission:
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
