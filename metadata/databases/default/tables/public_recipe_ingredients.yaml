@@ -17,9 +17,11 @@ insert_permissions:
       check: {}
       columns:
         - amount
+        - id
         - index
         - ingredient_id
         - recipe_id
+        - section
         - unit
       backend_only: false
   - role: user
@@ -30,9 +32,11 @@ insert_permissions:
             _eq: X-Hasura-User-Id
       columns:
         - amount
+        - id
         - index
         - ingredient_id
         - recipe_id
+        - section
         - unit
       backend_only: false
 select_permissions:
@@ -40,35 +44,44 @@ select_permissions:
     permission:
       columns:
         - amount
+        - id
         - index
         - ingredient_id
         - recipe_id
         - unit
+        - section
       filter: {}
   - role: public
     permission:
       columns:
         - amount
+        - id
         - index
         - ingredient_id
         - recipe_id
         - unit
+        - section
       filter: {}
   - role: user
     permission:
       columns:
         - amount
+        - id
         - index
         - ingredient_id
         - recipe_id
         - unit
+        - section
       filter: {}
 update_permissions:
   - role: manager
     permission:
       columns:
         - amount
+        - id
         - index
+        - ingredient_id
+        - section
         - unit
       filter: {}
       check: null
@@ -76,7 +89,10 @@ update_permissions:
     permission:
       columns:
         - amount
+        - id
         - index
+        - ingredient_id
+        - section
         - unit
       filter:
         recipe:
