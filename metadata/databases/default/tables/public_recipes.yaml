@@ -20,9 +20,12 @@ insert_permissions:
       set:
         user_id: x-hasura-USER-ID
       columns:
+        - cook_time
         - description
         - image
         - name
+        - portions
+        - prep_time
         - steps
       backend_only: false
   - role: user
@@ -33,9 +36,12 @@ insert_permissions:
       set:
         user_id: x-hasura-USER-ID
       columns:
+        - cook_time
         - description
         - image
         - name
+        - portions
+        - prep_time
         - steps
       backend_only: false
 select_permissions:
@@ -43,6 +49,9 @@ select_permissions:
     permission:
       columns:
         - id
+        - portions
+        - cook_time
+        - prep_time
         - steps
         - description
         - image
@@ -62,35 +71,47 @@ select_permissions:
         - created_at
         - updated_at
         - user_id
+        - cook_time
+        - prep_time
+        - portions
       filter: {}
   - role: user
     permission:
       columns:
         - id
-        - steps
+        - name
         - description
         - image
-        - name
-        - user_id
+        - steps
         - created_at
         - updated_at
+        - user_id
+        - cook_time
+        - prep_time
+        - portions
       filter: {}
 update_permissions:
   - role: manager
     permission:
       columns:
+        - cook_time
         - description
         - image
         - name
+        - portions
+        - prep_time
         - steps
       filter: {}
       check: null
   - role: user
     permission:
       columns:
+        - cook_time
         - description
         - image
         - name
+        - portions
+        - prep_time
         - steps
       filter:
         user_id:
