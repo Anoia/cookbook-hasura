@@ -14,47 +14,65 @@ insert_permissions:
     permission:
       check: {}
       columns:
+        - diet
         - name
+        - recipe_id
       backend_only: false
   - role: user
     permission:
       check: {}
       columns:
+        - diet
         - name
+        - recipe_id
       backend_only: false
 select_permissions:
   - role: manager
     permission:
       columns:
+        - created_at
+        - diet
         - id
         - name
-        - created_at
+        - recipe_id
         - updated_at
       filter: {}
   - role: public
     permission:
       columns:
+        - diet
         - id
         - name
+        - recipe_id
       filter: {}
   - role: user
     permission:
       columns:
+        - created_at
+        - diet
         - id
         - name
-        - created_at
+        - recipe_id
         - updated_at
       filter: {}
 update_permissions:
   - role: manager
     permission:
       columns:
+        - diet
         - name
+        - recipe_id
       filter: {}
       check: null
   - role: user
     permission:
       columns:
+        - diet
         - name
+        - recipe_id
       filter: {}
       check: null
+delete_permissions:
+  - role: manager
+    permission:
+      filter: {}
