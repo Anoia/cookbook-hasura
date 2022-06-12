@@ -6,6 +6,13 @@ object_relationships:
     using:
       foreign_key_constraint_on: user_id
 array_relationships:
+  - name: ingredients
+    using:
+      foreign_key_constraint_on:
+        column: recipe_id
+        table:
+          schema: public
+          name: ingredients
   - name: recipe_ingredients
     using:
       foreign_key_constraint_on:
