@@ -17,6 +17,7 @@ insert_permissions:
       check: {}
       columns:
         - amount
+        - extra_info
         - id
         - index
         - ingredient_id
@@ -32,6 +33,7 @@ insert_permissions:
             _eq: X-Hasura-User-Id
       columns:
         - amount
+        - extra_info
         - id
         - index
         - ingredient_id
@@ -44,36 +46,39 @@ select_permissions:
     permission:
       columns:
         - amount
+        - extra_info
         - id
         - index
         - ingredient_id
         - recipe_id
-        - unit
         - section
+        - unit
       filter: {}
       allow_aggregations: true
   - role: public
     permission:
       columns:
         - amount
+        - extra_info
         - id
         - index
         - ingredient_id
         - recipe_id
-        - unit
         - section
+        - unit
       filter: {}
       allow_aggregations: true
   - role: user
     permission:
       columns:
         - amount
+        - extra_info
         - id
         - index
         - ingredient_id
         - recipe_id
-        - unit
         - section
+        - unit
       filter: {}
       allow_aggregations: true
 update_permissions:
@@ -81,6 +86,7 @@ update_permissions:
     permission:
       columns:
         - amount
+        - extra_info
         - id
         - index
         - ingredient_id
@@ -92,6 +98,7 @@ update_permissions:
     permission:
       columns:
         - amount
+        - extra_info
         - id
         - index
         - ingredient_id
