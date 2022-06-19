@@ -29,6 +29,7 @@ insert_permissions:
       columns:
         - cook_time
         - description
+        - diet
         - image
         - name
         - portions
@@ -45,6 +46,7 @@ insert_permissions:
       columns:
         - cook_time
         - description
+        - diet
         - image
         - name
         - portions
@@ -55,47 +57,50 @@ select_permissions:
   - role: manager
     permission:
       columns:
-        - id
-        - portions
         - cook_time
-        - prep_time
-        - steps
+        - created_at
         - description
+        - diet
+        - id
         - image
         - name
-        - user_id
-        - created_at
+        - portions
+        - prep_time
+        - steps
         - updated_at
+        - user_id
       filter: {}
   - role: public
     permission:
       columns:
-        - id
-        - name
-        - description
-        - image
-        - steps
+        - cook_time
         - created_at
+        - description
+        - diet
+        - id
+        - image
+        - name
+        - portions
+        - prep_time
+        - steps
         - updated_at
         - user_id
-        - cook_time
-        - prep_time
-        - portions
       filter: {}
   - role: user
     permission:
       columns:
-        - id
-        - name
-        - description
-        - image
-        - steps
+        - cook_time
         - created_at
+        - description
+        - diet
+        - id
+        - image
+        - name
+        - portions
+        - prep_time
+        - steps
         - updated_at
         - user_id
-        - cook_time
-        - prep_time
-        - portions
       filter: {}
 update_permissions:
   - role: manager
@@ -103,6 +108,7 @@ update_permissions:
       columns:
         - cook_time
         - description
+        - diet
         - image
         - name
         - portions
@@ -115,6 +121,7 @@ update_permissions:
       columns:
         - cook_time
         - description
+        - diet
         - image
         - name
         - portions
